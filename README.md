@@ -7,10 +7,17 @@
 
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/InformaticsMatters/format-support-template?include_prereleases)
 
+>   Replace the following template text with your own documentation
+
 >   Replace the `InformaticsMatters/format-support-template` value in the
     above badge links with the name of your own repository.
 
->   Replace the following template text with your own documentation
+>   The GitHub Action workflows generate docker images.
+    if your docker repository name does not mirror your
+    GitHub repository name then you will need to adjust these actions.
+    For example, if you create a GitHub repository from this one and call it
+    'XYZ/my-support-template' then you must be able to push docker images
+    called 'xyz/my-support-template:latest' or edit the workflows.
 
 A template repository for DataTier **dataset** format-support implementations.
 

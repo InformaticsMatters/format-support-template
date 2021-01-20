@@ -1,3 +1,8 @@
+# Base your contaier on something of use to you and
+# preserve the brhaviour of this dockerfile.
+# You should use the 'docker-entrypoint.sh' file
+# in this repository as it contains a valuable reminder of the rules.
+
 ARG from_image=python:3.9.1
 FROM ${from_image}
 
