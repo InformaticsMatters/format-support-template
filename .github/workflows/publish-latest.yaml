@@ -25,20 +25,20 @@ on:
     - 'main'
 
 env:
-  IMAGE_NAME: ${{ github.respository }}
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   publish-latest:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out the repo - $GITHUB_REPOSITORY -
+    - name: Check out the repo
       uses: actions/checkout@v2
     - name: Login to docker hub
       uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Publish latest to docker hub
+    - name: Publish latest to docker hub - ${{ env.IMAGE_NAME }}
       uses: docker/build-push-action@v2
       with:
         push: true
