@@ -24,9 +24,6 @@ on:
     branches:
     - 'main'
 
-env:
-  IMAGE_NAME: ${{ github.repository }}
-
 jobs:
   publish-latest:
     runs-on: ubuntu-latest
@@ -38,8 +35,10 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Write image repo to env-file
+      run:  echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
     - name: Publish latest to docker hub - ${{ env.IMAGE_NAME }}
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ${{ env.IMAGE_NAME }}:latest
+        tags: ${{ env.IMAGE_REPOSITORY }}:latest
