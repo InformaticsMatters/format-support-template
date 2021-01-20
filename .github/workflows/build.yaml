@@ -35,5 +35,5 @@ jobs:
     - name: Build the contaienr image
       uses: docker/build-push-action@v1
       with:
-        tags: $GITHUB_REPOSITORY:latest
+        tags: ${{ env.GITHUB_REPOSITORY }}:latest
         push: false

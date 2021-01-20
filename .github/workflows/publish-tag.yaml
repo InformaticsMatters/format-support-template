@@ -40,5 +40,5 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-        repository: $GITHUB_REPOSITORY
+        repository: ${{ env.GITHUB_REPOSITORY }}
         tag_with_ref: true
