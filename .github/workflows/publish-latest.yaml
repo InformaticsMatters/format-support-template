@@ -1,0 +1,39 @@
+---
+name: publish latest
+
+# Actions on the main/master branch for every change.
+
+# -----------------
+# Control variables (GitHub Secrets)
+# -----------------
+#
+# At the GitHub 'organisation' or 'project' level you must have the following
+# GitHub 'Secrets' defined (i.e. via 'Settings -> Secrets'): -
+#
+# DOCKERHUB_USERNAME
+# DOCKERHUB_TOKEN
+#
+# -----------
+# Environment (GitHub Environments)
+# -----------
+#
+# Environment         (n/a)
+
+on:
+  push:
+    branches:
+    - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+    - name: Publish latest to docker hub
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        repository: $GITHUB_REPOSITORY
+        tag_with_ref: true

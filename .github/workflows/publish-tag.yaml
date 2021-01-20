@@ -1,0 +1,44 @@
+---
+name: publish tag
+
+# Actions for any 'unofficial' tag.
+
+# It's not an official tag if it's not formed from three digits
+# (i.e. is not 'N.N.N').
+# We publish images using the tag as a tag.
+
+# -----------------
+# Control variables (GitHub Secrets)
+# -----------------
+#
+# At the GitHub 'organisation' or 'project' level you must have the following
+# GitHub 'Secrets' defined (i.e. via 'Settings -> Secrets'): -
+#
+# DOCKERHUB_USERNAME
+# DOCKERHUB_TOKEN
+#
+# -----------
+# Environment (GitHub Environments)
+# -----------
+#
+# Environment         (n/a)
+
+on:
+  push:
+    tags:
+    - '**'
+    - '![0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  publish-stable:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+    - name: Publish tag to docker hub
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        repository: $GITHUB_REPOSITORY
+        tag_with_ref: true
