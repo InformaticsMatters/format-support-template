@@ -32,3 +32,6 @@ images on Docker Hub that can be accessed usign the reference
 
 You should support the production of image tags for `latest`, `stable` and
 individual tags like `1.0.0`.
+
+Test datasets should be stored in `test/datasets`. You should have at
+least one test dataset file.
