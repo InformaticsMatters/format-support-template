@@ -25,7 +25,7 @@ on:
     - 'main'
 
 env:
-  IMAGE_NAME: ${{ github.env.GITHUB_REPOSITORY }}
+  IMAGE_NAME: ${{ github.respository }}
 
 jobs:
   publish-latest:
