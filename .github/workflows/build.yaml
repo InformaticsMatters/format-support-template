@@ -21,10 +21,10 @@ name: build
 on:
   push:
     branches-ignore:
-    - 'master'
+    - 'main'
   pull_request:
     branches:
-    - 'master'
+    - 'main'
 
 jobs:
   build:
@@ -35,5 +35,5 @@ jobs:
     - name: Build the contaienr image
       uses: docker/build-push-action@v1
       with:
-        tags: ${{ env.GITHUB_REPOSITORY }}:latest
-        push: false
+        repository: ${{ env.GITHUB_REPOSITORY }}
+        tag_with_ref: true
