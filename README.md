@@ -28,6 +28,9 @@ used by the DataTier Manager to support the loading of a dataset _type_.
 To properly comply with our requirements and assist in future
 automation techniques you **MUST** satisfy the following design rules: -
 
+In the following the terms **must** and **should** should be
+interpreted according to best practices, as described in [RFC-2119].
+
 ## Repository design rules
 
 1.  **Must** be [created] using this template repository 
@@ -44,19 +47,21 @@ automation techniques you **MUST** satisfy the following design rules: -
 
 1.  **Must** expect to be executed using an arbitrary user ID.
     You cannot expect to run as a privileged user
-2.  **Will** have a volume mounted into it using the path `/dataset`
-3.  **Will** find data to be processed in `/dataset/input`
+2.  **Must** expect a volume mounted into it using the path `/dataset`
+3.  **Must** expect to find data for processing in `/dataset/input`
 4.  **Must** write the word `SUCCESS` upon successful completion,
     or the word `FAILURE` when it encounters an error,
     to the file `/dev/termination-log`
-5.  **Must** stop with an [exit-code] of `0` (OK), even on failure
-6.  On failure the image **should** write diagnostic (textual) information
-    to the file `/dataset/output/failure.txt` (i.e. do not use
-    `/dev/termination-log`)
-7.  **Should** process the input dataset into files in `/dataset/output`
+5.  **Must** only write the words `SUCCESS` or `FAILURE`
+    to the file `/dev/termination-log`
+6.  **Must** stop with an [exit-code] of `0` (OK), even on failure
+7.  **Should** write diagnostic (textual) information
+    to the file `/dataset/output/failure.txt` upon failure
+8.  **Should** process the input dataset into files in `/dataset/output`
 
 ---
 
 [created]: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template
 [exit-code]: https://en.wikipedia.org/wiki/Exit_status
 [semantic versioning 2] https://semver.org
+[rfc-2119]: https://tools.ietf.org/html/rfc2119
