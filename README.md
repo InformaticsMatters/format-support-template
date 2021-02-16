@@ -49,7 +49,7 @@ interpreted according to best practices, as described in [RFC-2119].
 1.  **Must** expect to be executed using an arbitrary user ID.
     You cannot expect to run as a privileged user
 2.  **Must** expect a volume mounted into it using the path `/dataset`
-3.  **Must** expect to find data for processing in `/dataset/input`
+3.  **Must** expect to find _read-only_ data for processing in `/dataset/input`
 4.  **Must** write the word `SUCCESS` upon successful completion,
     or the word `FAILURE` when it encounters an error,
     to the file `/dev/termination-log`. When the image completes,
