@@ -51,7 +51,9 @@ interpreted according to best practices, as described in [RFC-2119].
 3.  **Must** expect to find data for processing in `/dataset/input`
 4.  **Must** write the word `SUCCESS` upon successful completion,
     or the word `FAILURE` when it encounters an error,
-    to the file `/dev/termination-log`
+    to the file `/dev/termination-log`. When the image completes,
+    if this file does not exist or does not contain the word `SUCCESS`
+    the conversion will be treated as a failure
 5.  **Must** only write the words `SUCCESS` or `FAILURE`
     to the file `/dev/termination-log`
 6.  **Must** stop with an [exit-code] of `0` (OK), even on failure
