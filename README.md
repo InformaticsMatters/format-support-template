@@ -5,7 +5,7 @@
 ![build tag](https://github.com/InformaticsMatters/format-support-template/workflows/publish%20tag/badge.svg)
 ![build stable](https://github.com/InformaticsMatters/format-support-template/workflows/publish%20stable/badge.svg)
 
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/InformaticsMatters/format-support-template?include_prereleases)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/informaticsmatters/format-support-template)
 
 >   Replace the following template text with your own documentation
 
