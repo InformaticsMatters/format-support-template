@@ -28,7 +28,7 @@ used by the DataTier Manager to support the loading of a dataset _type_.
 To properly comply with our requirements and assist in future
 automation techniques you **MUST** satisfy the following design rules: -
 
-**Repository** rules...
+## **Repository** rules...
 
 1.  **Must** be [created] using this template repository 
 2.  **Must** be named `<type>-format-support`, where _type_ is a
@@ -40,7 +40,7 @@ automation techniques you **MUST** satisfy the following design rules: -
 5.  **Should** have at least one test dataset file
 6.  **Should** store test data in `test/datasets`
 
-**Image** rules...
+## **Image** rules...
 
 1.  **Must** expect to be executed using an arbitrary user ID.
     You cannot expect to run as a privileged user
