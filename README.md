@@ -13,25 +13,50 @@
     above badge links with the name of your own repository.
 
 >   The GitHub Action workflows generate docker images.
-    if your docker repository name does not mirror your
+    If your docker repository name does not mirror your
     GitHub repository name then you will need to adjust these actions.
     For example, if you create a GitHub repository from this one and call it
     'XYZ/my-support-template' then you must be able to push docker images
-    called 'xyz/my-support-template:latest' or edit the workflows.
+    called 'xyz/my-support-template:latest', or you will need to edit the
+    workflow files to satisfy your needs.
 
 A template repository for DataTier **dataset** format-support implementations.
 
 Use this repository to start development of a container image that can be
-used by the DataTier to support a dataset type. To assist in potential future
-automated inclusion in the DataTier your repository should
-be named `<type>-format-support`.
+used by the DataTier Manager to support the loading of a dataset _type_.
 
-You must have a Dockerfile and your GitLab Action must produce
-images on Docker Hub that can be accessed usign the reference
-`docker.io/<type>-format-support:<tag>`.
+To properly comply with our requirements and assist in future
+automation techniques you **MUST** satisfy the following design rules: -
 
-You should support the production of image tags for `latest`, `stable` and
-individual tags like `1.0.0`.
+**Repository** rules...
 
-Test datasets should be stored in `test/datasets`. You should have at
-least one test dataset file.
+1.  **Must** be [created] using this template repository 
+2.  **Must** be named `<type>-format-support`, where _type_ is a
+    symbolic reference of the type of dataset you're supporting (i.e `sdf`)
+3.  **Must** produce images on Docker Hub that can be accessed using
+    the image `<owner>/<type>-format-support:<tag>`
+4.  **Should** support the production of image tags for `latest`, `stable`
+    and individual [Semantic Versioning 2] tags like `1.0.0`
+5.  **Should** have at least one test dataset file
+6.  **Should** store test data in `test/datasets`
+
+**Image** rules...
+
+1.  **Must** expect to be executed using an arbitrary user ID.
+    You cannot expect to run as a privileged user
+2.  **Will** have a volume mounted into it using the path `/dataset`
+3.  **Will** find data to be processed in `/dataset/input`
+4.  **Must** write the word `SUCCESS` upon successful completion,
+    or the word `FAILURE` when it encounters an error,
+    to the file `/dev/termination-log`
+5.  **Must** stop with an [exit-code] of `0` (OK), even on failure
+6.  On failure the image **should** write diagnostic (textual) information
+    to the file `/dataset/output/failure.txt` (i.e. do not use
+    `/dev/termination-log`)
+7.  **Should** process the input dataset into files in `/dataset/output`
+
+---
+
+[created]: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template
+[exit-code]: https://en.wikipedia.org/wiki/Exit_status
+[semantic versioning 2] https://semver.org
