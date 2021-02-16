@@ -12,13 +12,16 @@
 # - You will not have root access to the filesystem
 # - The (read-only) dataset files to format will be in '/dataset/input'
 # - You must deposit formatted files in '/dataset/output'
-# - If the file '/dataset/output/error.txt' exists this will be
-#   interpreted as an error. The text in the file being used for diagnostic
-#   information.
-# - Not generating any files in '/dataset/output' is interpreted as an error
-# - Your container MUST use exit code 0 (even if there's an error) to prevent
-#   the DataTier (Kubernetes) re-launching your image.
+# - Your container must leave using an exit code of 0 (even if there's an error)
+# - You must write the word `SUCCESS` upon successful completion,
+#   or the word `FAILURE` when it encounters an error,
+#   to the file `/dev/termination-log`.
+# - You can use `/dataset/output/failure.txt` to store diagnostic
+#   failure information.
 # -----------------------------------------------------------------------------
 
 # Now format your data...
-echo "Hello World!" > /dataset/output/error.txt
+
+echo "Write me!" > /dataset/output/failure.txt
+
+echo "FAILURE" > /dev/termination-log
