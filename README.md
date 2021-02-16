@@ -38,10 +38,11 @@ interpreted according to best practices, as described in [RFC-2119].
     symbolic reference of the type of dataset you're supporting (i.e `sdf`)
 3.  **Must** produce images on Docker Hub that can be accessed using
     the image `<owner>/<type>-format-support:<tag>`
-4.  **Should** support the production of image tags for `latest`, `stable`
+4.  **Must** support the production of image using the tag `stable`
+5.  **Should** support the production of image tags for `latest`
     and individual [Semantic Versioning 2] tags like `1.0.0`
-5.  **Should** have at least one test dataset file
-6.  **Should** store test data in `test/datasets`
+6.  **Should** have at least one test dataset file
+7.  **Should** store test data in `test/datasets`
 
 ## Image behaviour rules
 
