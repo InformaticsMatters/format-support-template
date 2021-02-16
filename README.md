@@ -63,5 +63,5 @@ interpreted according to best practices, as described in [RFC-2119].
 
 [created]: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template
 [exit-code]: https://en.wikipedia.org/wiki/Exit_status
-[semantic versioning 2] https://semver.org
+[semantic versioning 2]: https://semver.org
 [rfc-2119]: https://tools.ietf.org/html/rfc2119
