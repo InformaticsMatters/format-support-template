@@ -29,6 +29,10 @@ Repositories...
 11. **Must** store test data that cannot be processed successfully in
     a sub-directory of `test/failure`, i.e. `test/failure/1/bad.data`
 
+>   Read test/README.md for a discussion of the test directory structure
+    and example test execution commands that you are expected to be
+    able to support
+
 ## Image behaviour rules
 
 Images...
