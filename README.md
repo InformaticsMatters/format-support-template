@@ -20,7 +20,7 @@ that can be found in this repository's `RULES.md`.
 Replace the `InformaticsMatters/format-support-template` value in the
 above badge links with the name of your own repository.
 
-The GitHub Action workflows generate docker images.
+The built-in GitHub Action workflows generate docker images.
 If your docker repository name does not mirror your
 GitHub repository name then you will need to adjust these actions.
 For example, if you create a GitHub repository from this one and call it
