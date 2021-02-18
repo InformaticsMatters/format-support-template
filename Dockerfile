@@ -1,33 +1,29 @@
-# Base your contaier on something of use to you and
-# preserve the brhaviour of this dockerfile.
-# You should use the 'docker-entrypoint.sh' file
-# in this repository as it contains a valuable reminder of the rules.
+# Base your contaier on something of use and,
+# by convention, launch your run-time logic
+# from a 'docker-entrypoint.sh' shell-script.
+#
+# Remember - regardeless of any user you have avalable at build-time
+# the container user ID and group ID will be out of you rcontrol.
+# So plan accordingly.
 
 ARG from_image=python:3.9.1
 FROM ${from_image}
 
-ENV FORMAT_USER formatter
-# Base directory for the application
-# Also used for user directory
-ENV APP_ROOT /home/${FORMAT_USER}
-
-# Construct key directories
-WORKDIR ${APP_ROOT}
+# When run by the Data Tier Manager
+# the '/dataset' directory will be replaced by an external volume.
+# Here we simply 'touch' the expected directories in case we want
+# to run independently.
 WORKDIR /dataset/input
 WORKDIR /dataset/output
 
-# Containers should NOT run as root
-RUN useradd -d ${APP_ROOT} -s /bin/bash ${FORMAT_USER} && \
-    chown -R ${FORMAT_USER}.${FORMAT_USER} ${APP_ROOT}
+# All formatter images must place their
+# implementations (and start) in /home/formatter
+WORKDIR /home/formatter
 
-COPY docker-entrypoint.sh ${APP_ROOT}/
-RUN chown -R ${FORMAT_USER}.${FORMAT_USER} ${APP_ROOT} && \
-    chown -R ${FORMAT_USER}.${FORMAT_USER} /dataset/output
-
-# Switch to container user
-ENV HOME ${APP_ROOT}
-WORKDIR ${APP_ROOT}
-USER ${FORMAT_USER}
+# Copy-in the entrypoint,
+# making sure anyone can read and execute it.
+COPY docker-entrypoint.sh ./
+RUN chmod a+rx ./*.sh
 
 # Start the application
 CMD ./docker-entrypoint.sh
