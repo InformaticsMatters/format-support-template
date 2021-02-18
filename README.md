@@ -9,7 +9,8 @@
 
 >   Replace the following template text with your own documentation
 
-A template repository for **DataTier dataset format-support implementations**.
+A template repository for **Informatics Matters DataTier dataset
+format-support container image implementations**.
 
 Use this repository to start development of a container image that can be
 used by the DataTier Manager to support the loading of a dataset _type_.
