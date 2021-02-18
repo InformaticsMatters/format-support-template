@@ -6,6 +6,7 @@
 # Refer to RULES.md for comprehensive format support rules,
 # summarised below...
 #
+# 0. You MUST NOT exit with a non-zero exit code
 # 1. A volume will be mounted at '/dataset'
 # 2. There will be files in '/dataset/input' that you can read
 # 3. There will be a '/dataset/output' directory where you can write
