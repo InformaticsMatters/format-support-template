@@ -15,10 +15,10 @@
 #    diagnostic message into '/dataset/output/error.txt'
 # -----------------------------------------------------------------------------
 
-# Replace this text
-# and following with your formatter implementation...
+# Replace this text and the remainder of the file
+# with your formatter implementation...
 
-# Now format your data...
+# Format your data...
 echo "Hello World!"
 
 # Simulate an error with a non-zero exit code.
