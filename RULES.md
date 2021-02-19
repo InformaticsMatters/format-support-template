@@ -19,7 +19,7 @@ automation techniques you **must** satisfy the following design rules.
 
 Repositories...
 
-1.  **Must** not remove or edit the files `RULES.md` or `LICENSE`,
+1.  **Must** not remove or edit the files `RULES.md` or `VERSION.txt`,
     these files are excluded from the MIT license and must remain,
     unaltered
 2.  **Must** be [created] using this template repository 
@@ -59,19 +59,23 @@ Repositories...
 Images...
 
 1.  **Must** be published to Docker Hub
-2.  **Must** expect to be executed using an arbitrary user and group ID.
+2.  **Should** use `docker-entrypoint.sh` as their container entrypoint
+3.  **Must** use `CMD` and not `ENTRYPOINT` to launch the entrypoint script  
+4.  **Must** expect to be executed using an arbitrary user and group ID.
     Your container cannot expect to run as a privileged user
-3.  **Must** expect a volume mounted into it using the path `/dataset`
-4.  **Must** expect to find the _read-only_ dataset file for processing in
+5.  **Must** expect the environment variable `DT_DATASET_ID` to be set
+    to a string representing the identity of the dataset provided
+6.  **Must** expect a volume mounted into it using the path `/dataset`
+7.  **Must** expect to find the _read-only_ dataset file for processing in
     `/dataset/input`
-5.  **Must not** expect to be able to write to `/dataset/input`
-6.  **Should** process the input dataset into files in `/dataset/output`
-7.  **Must** place the implementation into the directory `/home/formatter`
+8.  **Must not** expect to be able to write to `/dataset/input`
+9.  **Should** process the input dataset into files in `/dataset/output`
+10. **Must** place the implementation into the directory `/home/formatter`
     and set that directory as the image `WORKDIR`
-8.  **Should** write diagnostic failure (textual) information
+11. **Should** write diagnostic failure (textual) information
     to `/dataset/output/error.txt` upon failure
-9.  **Should** expect to be limited to no more than 1 CPU core
-10. **Should** expect to be limited to no more than 1GiB of memory.
+12. **Should** expect to be limited to no more than 1 CPU core
+13. **Should** expect to be limited to no more than 1GiB of memory.
     Importantly, exceeding the memory limit will result in the container
     being terminated
 

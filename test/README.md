@@ -17,4 +17,5 @@ for functional testing: -
     $ docker run --volume=$PWD/test/success/1:/dataset \
         --memory=1g \
         --cpus=1 \
+        --env DT_DATASET_ID=1 \
         me/mydata-format-support:stable

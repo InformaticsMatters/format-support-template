@@ -9,13 +9,6 @@
 ARG from_image=python:3.9.1
 FROM ${from_image}
 
-# When run by the Data Tier Manager
-# the '/dataset' directory will be replaced by an external volume.
-# Here we simply 'touch' the expected directories in case we want
-# to run independently.
-WORKDIR /dataset/input
-WORKDIR /dataset/output
-
 # All formatter images must place their
 # implementations (and start) in /home/formatter
 WORKDIR /home/formatter

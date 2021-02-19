@@ -9,7 +9,9 @@
 # 1. A volume will be mounted at '/dataset'
 # 2. The dataset file will be in '/dataset/input'
 # 3. There will be a '/dataset/output' directory where you can write
-# 4. If you encounter an error you should put a helpful human-readable
+# 4. The environment variable `DT_DATASET_ID` will be set to
+#    a string value representing thw identity of the dataset
+# 5. If you encounter an error you should put a helpful human-readable
 #    diagnostic message into '/dataset/output/error.txt'
 # -----------------------------------------------------------------------------
 
