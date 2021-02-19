@@ -44,7 +44,12 @@ Repositories...
     successfully (i.e. an error-handling test)
 14. **Must** store test data that cannot be processed successfully in
     a sub-directory of `test/failure`, i.e. `test/failure/1/bad.data`
-
+15. **Must** provide `build`, `build latest`, `build tag` and `build stable`
+    badges on a single line, in format provided in the top of the current
+    `README.md`
+16. **Must** provide a `tag` badge, on its own line, in format provided
+    in the top of the current `README.md`
+ 
 >   Read test/README.md for a discussion of the test directory structure
     and example test execution commands that you are expected to be
     able to support
