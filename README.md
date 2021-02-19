@@ -40,25 +40,28 @@ to edit the workflow files to satisfy your needs.
 
 The built-in Actions: -
 
-1.  For every commit to `main` an Action builds the docker image and
+1.  **For every commit to **main** an Action builds the docker image and
     pushes it with the tag `:latest`.
     This is accomplished by the `publish-latest.yaml` Action.
-2.  For every tag an Action builds the docker image and
+2.  **For every tag** an Action builds the docker image and
     pushes it with the tag `:<tag>`
     This is accomplished by the `publish-tag.yaml` Action.
-3.  If the tag looks like a formal release, i.e. is a 2 or 3-digit number like
-    `2021.1` or `1.0.0` an Action builds the docker image and
-    pushes it with the tag `:<tag>` and with the tag `:stable`
-    This is accomplished by the `publish-stable.yaml` Action.
-4.  For every build on a branch, or a pull request to `main` an Action
+    -   If the tag looks like a formal release, i.e. is a 2 or 3-digit number
+        like `2021.1` or `1.0.0` an Action builds the docker image and
+        pushes it with the tag `:<tag>` and with the tag `:stable`
+        This is accomplished by the `publish-stable.yaml` Action.
+3.  **For every commit on a branch**, or a pull request to `main` an Action
     simply builds the docker image, but does not push it.
     This is accomplished by the `build.yaml` Action.
 
-In order for 1., 2. or 3. to work you will need to define GitHub repository
-(or organisation) secrets to enable the action to login to Docker. The
-secrets that need to be defined are: -
+In order for 1the above Actions to succeed you will need to define GitHub
+Repository (or organisation) secrets to enable the action to login to Docker.
+The secrets that need to be defined are: -
 
 -   `DOCKERHUB_USERNAME`
 -   `DOCKERHUB_TOKEN`
+
+>   When you create a repository in the InformaticsMatters organisation
+    these secrets are already set at the organisation level.
 
 ---
