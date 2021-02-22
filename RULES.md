@@ -78,7 +78,8 @@ Images...
 10. **Must** place the implementation into the directory `/home/formatter`
     and set that directory as the image `WORKDIR`
 11. **Should** write diagnostic failure (textual) information
-    to `/dataset/output/error.txt` upon failure
+    upon failure to the file identified by the container environment variable
+    `DT_ERROR_TEST_FILE`
 12. **Should** expect to be limited to no more than 1 CPU core
 13. **Should** expect to be limited to no more than 1GiB of memory.
     Importantly, exceeding the memory limit will result in the container
