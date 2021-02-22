@@ -17,7 +17,7 @@ services:
     image: ${IMAGE_NAME:-formatter}:latest
     environment:
     - DT_DATASET_ID=${IMAGE_TEST:-1}
-    - DT_ERROR_TEST_FILE=/dataset/output/error.txt
+    - DT_ERROR_TEXT_FILE=/dataset/output/error.txt
     volumes:
     - ${PWD}/test/success/${IMAGE_TEST:-1}:/dataset
     deploy:

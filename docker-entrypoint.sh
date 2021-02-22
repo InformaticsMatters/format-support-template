@@ -14,7 +14,7 @@
 #    a string value representing the identity of the dataset
 # 5. If you encounter an error you should put a helpful (human-readable)
 #    diagnostic message into the file identified by the environment variable
-#    `DT_ERROR_TEST_FILE`
+#    `DT_ERROR_TEXT_FILE`
 # -----------------------------------------------------------------------------
 
 # Replace this text and the remainder of the file
@@ -26,5 +26,5 @@ echo "Hello World!"
 # Here we simulate an error with a non-zero exit code.
 # Upon success you would either a) not use exit or b) use 'exit 0'.
 # Here we're simulating a failure...
-echo "Write me!" > "${DT_ERROR_TEST_FILE}"
+echo "Write me!" > "${DT_ERROR_TEXT_FILE}"
 exit 1

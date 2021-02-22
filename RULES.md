@@ -80,7 +80,7 @@ Images...
     and set that directory as the image `WORKDIR`
 11. **Should** write diagnostic failure (textual) information
     upon failure to the file identified by the container environment variable
-    `DT_ERROR_TEST_FILE`
+    `DT_ERROR_TEXT_FILE`
 12. **Should** expect to be limited to no more than 1 CPU core
 13. **Should** expect to be limited to no more than 1GiB of memory.
     Importantly, exceeding the memory limit will result in the container
