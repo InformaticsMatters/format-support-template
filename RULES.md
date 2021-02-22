@@ -21,7 +21,8 @@ Repositories...
 
 1.  **Must** not remove or edit the files `RULES.md`, `TESTING.md`,
     `.yamllint` or `VERSION.txt`, these files are excluded from the MIT
-    license and must remain, unaltered
+    license and must remain, unaltered if the formatter is to pass
+    potential future automated testing
 2.  **Must** not remove the GitHub Action `lint` Job in any GitHub
     Action workflow, i.e. the `lint` action is an acceptance requirement
 3.  **Must** be [created] using this template repository 
