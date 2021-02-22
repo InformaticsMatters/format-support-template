@@ -6,7 +6,7 @@
 #       the container's actual user ID and group ID will be assigned by the
 #       Data Tier Manager ... so plan accordingly.
 
-ARG from_image=python:3.9.1
+ARG from_image=python:3.9.2-slim-buster
 FROM ${from_image}
 
 # Set expected environment variables to default values.
