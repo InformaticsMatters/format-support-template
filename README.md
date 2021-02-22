@@ -20,16 +20,31 @@ used by the DataTier Manager to support the loading of a dataset _type_.
 You are required to preserve and adhere to the design rules
 that can be found in this repository's `RULES.md`. 
 
-Read, understand and act on the following before discarding this section of
-text: -
+Please take time to familiarise yourself with following sections before
+discarding this text. Failing to comply with what's discussed here
+may result in the image not passing any future automated acceptance testing
+that may be deployed.
 
+-   Building
 -   Testing
 -   Built-in GitHub Actions
 -   Update the badge links
 
+## Building
+You should be able to build your format-support image using `docker`: -
+
+    $ docker build . -t ${PWD##*/}:latest
+
+Or `docker-compose`: -
+
+    $ IMAGE_NAME=${PWD##*/} docker-compose build
+
+>   The expectation is that you're using a recent docker (like `20.10.2`)
+    and docker-compose (link `1.27.4`).
+
 ## Testing
-Familiarise yourself with `RULES.md` and `TESTING.md`, which describes
-a strategy you can replicate in order to develop and test your images.
+Familiarise yourself with `TESTING.md`, which describes
+a strategy you can replicate while developing and testing your image.
 
 ## Built-in GitHub Actions
 The template contains GitHub Actions that will automatically build the
@@ -73,7 +88,6 @@ The secrets that need to be defined are: -
 
 ## Update the badge links
 Don't forget to replace the `InformaticsMatters/format-support-template`
-value in the above badge links with the name of your own repository.
-
+values in the above badge links with the name of your own repository.
 
 ---
