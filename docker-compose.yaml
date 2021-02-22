@@ -1,0 +1,26 @@
+---
+
+# A docker-compose file to simplify image testing.
+#
+#   NOTE: This file assumes docker-compose v1.27.0 or better.
+#
+# Use to build and test an image using the following environment variables:
+#
+# - IMAGE_NAME (default formatter)
+# - IMAGE_TEST (default '1')
+#
+# See TESTING.md
+
+services:
+  formatter:
+    build: .
+    image: "${IMAGE_NAME:-formatter}:latest"
+    environment:
+    - DT_DATASET_ID=${IMAGE_TEST:-1}
+    volumes:
+    - ${PWD}/test/success/${IMAGE_TEST:-1}:/dataset
+    deploy:
+      resources:
+        limits:
+          cpus: 1
+          memory: 1G

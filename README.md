@@ -20,9 +20,16 @@ used by the DataTier Manager to support the loading of a dataset _type_.
 You are required to preserve and adhere to the design rules
 that can be found in this repository's `RULES.md`. 
 
-## Update the badge links
-Replace the `InformaticsMatters/format-support-template` value in the
-above badge links with the name of your own repository.
+Read, understand and act on the following before discarding this section of
+text: -
+
+-   Testing
+-   Built-in GitHub Actions
+-   Update the badge links
+
+## Testing
+Familiarise yourself with `RULES.md` and `TESTING.md`, which describes
+a strategy you can replicate in order to develop and test your images.
 
 ## Built-in GitHub Actions
 The template contains GitHub Actions that will automatically build the
@@ -63,5 +70,10 @@ The secrets that need to be defined are: -
 
 >   When you create a repository in the InformaticsMatters organisation
     these secrets are already set at the organisation level.
+
+## Update the badge links
+Don't forget to replace the `InformaticsMatters/format-support-template`
+value in the above badge links with the name of your own repository.
+
 
 ---

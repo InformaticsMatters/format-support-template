@@ -19,36 +19,41 @@ automation techniques you **must** satisfy the following design rules.
 
 Repositories...
 
-1.  **Must** not remove or edit the files `RULES.md` or `VERSION.txt`,
-    these files are excluded from the MIT license and must remain,
-    unaltered
-2.  **Must** be [created] using this template repository 
-3.  **Must** root any and all source code (implementation) in
+1.  **Must** not remove or edit the files `RULES.md`, `TESTING.md`,
+    `.yamllint` or `VERSION.txt`, these files are excluded from the MIT
+    license and must remain, unaltered
+2.  **Must** not remove the GitHub Action `lint` Job in any GitHub
+    Action workflow, i.e. the `lint` action is an acceptance requirement
+3.  **Must** be [created] using this template repository 
+4.  **Must** root any and all source code (implementation) in
     the `source` directory
-4.  **Should** place format support documentation in the project `README.md`
-5.  **Must** be named `<type>-format-support`, where _type_ is a
+5.  **Should** place format support documentation in the project `README.md`
+6.  **Must** be named `<type>-format-support`, where _type_ is a
     symbolic reference of the type of dataset you're supporting (i.e `sdf`)
-6.  **Must** produce public images on Docker Hub that can be accessed using
+7.  **Must** produce public images on Docker Hub that can be accessed using
     the reference `<owner>/<type>-format-support:<tag>`
-7.  **Must** be buildable using a `Dockerfile` in the root of the project
-8.  **Must** support the production of an image using the tag `stable`
-9.  **Should** support the production of image tags for `latest`
+8.  **Must** be buildable using a `Dockerfile` in the root of the project
+9.  **Must** support the production of an image using the tag `stable`
+10. **Should** support the production of image tags for `latest`
     and individual [Semantic Versioning 2] tags like `1.0.0`
-10. **Must** support being built using the command `docker build .`
+11. **Must** support being built using the command `docker build .`
     from the project root, without additional parameters
-11. **Must** contain at least one test dataset that can be processed
+12. **Must** contain at least one test dataset that can be processed
     successfully
-12. **Must** store test data that can be processed successfully in
+13. **Must** store test data that can be processed successfully in
     a sub-directory of `test/success`, i.e. `test/success/1/good.data`
-13. **Should** contain at least one test dataset file that cannot be processed
+14. **Should** contain at least one test dataset file that cannot be processed
     successfully (i.e. an error-handling test)
-14. **Must** store test data that cannot be processed successfully in
+15. **Must** store test data that cannot be processed successfully in
     a sub-directory of `test/failure`, i.e. `test/failure/1/bad.data`
-15. **Must** provide `build`, `build latest`, `build tag` and `build stable`
+16. **Must** provide `build`, `build latest`, `build tag` and `build stable`
     badges on a single line, in format provided in the top of the current
     `README.md`
-16. **Must** provide a `tag` badge, on its own line, in format provided
+17. **Must** provide a `tag` badge, on its own line, in format provided
     in the top of the current `README.md`
+18. **Should** have access to docker-compose v1.27.0 or better
+19. **Should** have access to Python 3.8 or better - especially if the
+    developer wants to execute the GitLab Action lint tests
  
 >   Read test/README.md for a discussion of the test directory structure
     and example test execution commands that you are expected to be
