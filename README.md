@@ -27,9 +27,9 @@ that may be deployed.
 
 -   Building
 -   Testing
--   Image tags
+-   Required image tags
 -   Built-in GitHub Actions
--   Update the badge links
+-   Updating the badge links
 
 ## Building
 You should be able to build your format-support image using `docker`: -
@@ -47,13 +47,14 @@ Or `docker-compose`: -
 Familiarise yourself with `TESTING.md`, which describes
 a strategy you can replicate while developing and testing your image.
 
-## Image tags
+## Required image tags
 The DataTier Manager will only execute formatter images tagged `:stable`
 so you **MUST** ultimately produce an image with this tag. You are also
 encouraged to produce a `:latest` tag and any specific tags that satisfy your
 own needs (with formats like `1.0.0-rc.1`, `1.0.0` and `2021.1`).
 
->   This repository's _Built-in GitHub Action will do all this for you.
+>   This repository's built-in GitHub Actions (see the next section)
+    will do all this for you.
 
 ## Built-in GitHub Actions
 The template contains a number of [GitHub Actions] that will automatically
@@ -95,7 +96,7 @@ GitHub Repository (or Organisation) **secrets**: -
     are already presented with these secrets as they are already
     defined at the Organisation level.
 
-## Update the badge links
+## Updating the badge links
 Don't forget to replace the `InformaticsMatters/format-support-template`
 values in the above badge links with the name of your own repository, otherwise
 your badges will reflect the template repository's state, not yours.
