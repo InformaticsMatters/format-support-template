@@ -27,6 +27,7 @@ that may be deployed.
 
 -   Building
 -   Testing
+-   Image tags
 -   Built-in GitHub Actions
 -   Update the badge links
 
@@ -46,12 +47,18 @@ Or `docker-compose`: -
 Familiarise yourself with `TESTING.md`, which describes
 a strategy you can replicate while developing and testing your image.
 
-## Built-in GitHub Actions
-The template contains GitHub Actions that will automatically build the
-container image and also publish `:latest` and any tags you make to
-Docker Hub.
+## Image tags
+The DataTier Manager will only execute formatter images tagged `:stable`
+so you **MUST** ultimately produce an image with this tag. You are also
+encouraged to produce a `:latest` tag and any specific tags that satisfy your
+own needs (with formats like `1.0.0-rc.1`, `1.0.0` and `2021.1`).
 
->   Your images must be published to Docker Hub.
+>   This repository's _Built-in GitHub Action will do all this for you.
+
+## Built-in GitHub Actions
+The template contains a number of [GitHub Actions] that will automatically
+build the container image and also publish `:latest` and any tags you make to
+Docker Hub.
 
 This relies on your docker registry mirroring your repository. If your docker
 repository name does not mirror your GitHub repository name then you will need
@@ -60,34 +67,39 @@ from this one and call it 'XYZ/my-support-template' then you must be able to
 push docker images to 'xyz/my-support-template:latest'. If not, you will need
 to edit the workflow files to satisfy your needs.
 
-The built-in Actions: -
+>   Your images must be published to Docker Hub.
 
-1.  **For every commit to **main** an Action builds the docker image and
-    pushes it with the tag `:latest`.
+The following built-in actions are: -
+
+1.  **For every commit to main** an Action builds the docker image and
+    pushes it using the image tag `:latest`.
     This is accomplished by the `publish-latest.yaml` Action.
-2.  **For every tag** an Action builds the docker image and
-    pushes it with the tag `:<tag>`
+2.  **For every repository tag** an Action builds the docker image and
+    pushes it with the image tag `:<tag>`
     This is accomplished by the `publish-tag.yaml` Action.
-    -   If the tag looks like a formal release, i.e. is a 2 or 3-digit number
+    -   If the tag looks like a _formal_ release, i.e. is a 2 or 3-digit number
         like `2021.1` or `1.0.0` an Action builds the docker image and
-        pushes it with the tag `:<tag>` and with the tag `:stable`
+        pushes it using the image tag `:<tag>` and the tag `:stable`
         This is accomplished by the `publish-stable.yaml` Action.
-3.  **For every commit on a branch**, or a pull request to `main` an Action
-    simply builds the docker image, but does not push it.
+3.  **For every commit on a branch**, or a pull request to main, an Action
+    runs that just builds the docker image - but does not push it.
     This is accomplished by the `build.yaml` Action.
 
-In order for 1the above Actions to succeed you will need to define GitHub
-Repository (or organisation) secrets to enable the action to login to Docker.
-The secrets that need to be defined are: -
+In order for the above Actions to succeed you will need to define the following
+GitHub Repository (or Organisation) **secrets**: -
 
--   `DOCKERHUB_USERNAME`
--   `DOCKERHUB_TOKEN`
+-   `DOCKERHUB_USERNAME` A valid DockerHUb user
+-   `DOCKERHUB_TOKEN` A valid DockerHub user password or, ideally, access token
 
->   When you create a repository in the InformaticsMatters organisation
-    these secrets are already set at the organisation level.
+>   Repositories created in the InformaticsMatters Organisation
+    are already presented with these secrets as they are already
+    defined at the Organisation level.
 
 ## Update the badge links
 Don't forget to replace the `InformaticsMatters/format-support-template`
-values in the above badge links with the name of your own repository.
+values in the above badge links with the name of your own repository, otherwise
+your badges will reflect the template repository's state, not yours.
 
 ---
+
+[github actions]: https://github.com/features/actions
