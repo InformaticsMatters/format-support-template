@@ -89,10 +89,10 @@ The following built-in actions are: -
 In order for the above Actions to succeed you will need to define the following
 GitHub Repository (or Organisation) **secrets**: -
 
--   `DOCKERHUB_USERNAME` A valid DockerHUb user
--   `DOCKERHUB_TOKEN` A valid DockerHub user password or, ideally, access token
+-   `DOCKERHUB_USERNAME` A Docker Hub user
+-   `DOCKERHUB_TOKEN` A Docker Hub user password or, ideally, access token
 
->   Repositories created in the InformaticsMatters Organisation
+>   Repositories created in the InformaticsMatters organisation
     are already presented with these secrets as they are already
     defined at the Organisation level.
 
