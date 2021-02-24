@@ -75,17 +75,15 @@ Images...
     to a string representing the full path to the dataset file that is to be
     processed
 7.  **Must** expect a volume mounted into it using the path `/dataset`
-8.  **Must** expect to find the _read-only_ dataset file for processing in
-    `/dataset/input`
-9.  **Must not** expect to be able to write to `/dataset/input`
-10.  **Should** process the input dataset into files in `/dataset/output`
-11. **Must** place the implementation into the directory `/home/format-support`
+8.  **Should** process the input dataset into files in the directory
+    identified by `DT_DATASET_OUTPUT_PATH`
+9.  **Must** place the implementation into the directory `/home/format-support`
     as the Pod will be started with this as the working directory.
-12. **Should** write diagnostic failure (textual) information
+10. **Should** write diagnostic failure (textual) information
     upon failure to the file identified by the container environment variable
     `DT_ERROR_TEXT_FILE`
-13. **Should** expect to be limited to no more than 1 CPU core
-14. **Should** expect to be limited to no more than 1GiB of memory.
+11. **Should** expect to be limited to no more than 1 CPU core
+12. **Should** expect to be limited to no more than 1GiB of memory.
     Importantly, exceeding the memory limit will result in the container
     being terminated
 

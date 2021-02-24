@@ -7,16 +7,15 @@
 # summarised below...
 #
 # 1. A volume will be mounted at '/dataset'
-# 2. The dataset file will be in '/dataset/input'
-# 3. There will be a '/dataset/output' directory where you are expected
-#    to write your formatted Dataset files
-# 4. The environment variable `DT_DATASET_NAME` will be set to
+# 2. The environment variable `DT_DATASET_NAME` will be set to
 #    a string value representing the name given to the dataset
-# 5. The environment variable `DT_DATASET_FILE` will be set to
+# 3. The environment variable `DT_DATASET_FILE` will be set to
 #    the full path and file of the dataset file to be processed
-# 6. If you encounter an error you should put a helpful (human-readable)
-#    diagnostic message into the file identified by the environment variable
-#    `DT_ERROR_TEXT_FILE`
+# 4. The environment variable `DT_DATASET_OUTPUT_PATH` will be
+#    a directory you can write to
+# 5. If you encounter an error you should put a helpful (human-readable)
+#    diagnostic message into the file (and path) identified by the environment
+#    variable `DT_ERROR_TEXT_FILE`
 # -----------------------------------------------------------------------------
 
 # Replace this text and the remainder of the file
