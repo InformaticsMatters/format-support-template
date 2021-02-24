@@ -77,7 +77,7 @@ Images...
 8.  **Must not** expect to be able to write to `/dataset/input`
 9.  **Should** process the input dataset into files in `/dataset/output`
 10. **Must** place the implementation into the directory `/home/format-support`
-    and set that directory as the image `WORKDIR`
+    as the Pod will be started with this as the working directory.
 11. **Should** write diagnostic failure (textual) information
     upon failure to the file identified by the container environment variable
     `DT_ERROR_TEXT_FILE`
