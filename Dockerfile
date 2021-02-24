@@ -15,8 +15,8 @@ ENV DT_DATASET_ID=1
 ENV DT_ERROR_TEXT_FILE=/dataset/output/error.txt
 
 # All formatter images MUST place their
-# implementations (and start) in /home/formatter
-WORKDIR /home/formatter
+# implementations (and expect to start) in /home/format-support
+WORKDIR /home/format-support
 
 # Inject the entrypoint,
 # making sure anyone can read and execute it.
