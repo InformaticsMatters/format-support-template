@@ -15,6 +15,14 @@ automation techniques you **must** satisfy the following design rules.
 >   Deviating from the rules laid out in this file may result in your formatter
     being removed from the Data Tier Manager format library.
 
+In summary, for a format-support container image to run successfully
+within the Data Tier Management service...
+
+-   It **must** have a `:stable` image tag
+-   It **must not** exit with a non-zero exit code
+-   It **must** write something to `DT_DATASET_OUTPUT_PATH`
+-   It **must not** create the file `DT_ERROR_TEXT_FILE`
+
 ## Repository design rules
 
 Repositories...
