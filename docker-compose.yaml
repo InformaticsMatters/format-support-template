@@ -7,7 +7,8 @@
 # Use to build and test an image using the following environment variables:
 #
 # - IMAGE_NAME (default 'formatter')
-# - IMAGE_TEST (default '1')
+# - DATASET_NAME (default '1')
+# - DATASET_FILE (default 'dummy.txt')
 #
 # See TESTING.md
 
@@ -16,10 +17,11 @@ services:
     build: .
     image: ${IMAGE_NAME:-formatter}:latest
     environment:
-    - DT_DATASET_ID=${IMAGE_TEST:-1}
+    - DT_DATASET_NAME=${DATASET_NAME:-1}
+    - DT_DATASET_FILE=/dataset/input/${DATASET_FILE:-dummy.txt}
     - DT_ERROR_TEXT_FILE=/dataset/output/error.txt
     volumes:
-    - ${PWD}/test/success/${IMAGE_TEST:-1}:/dataset
+    - ${PWD}/test/success/${DATASET_NAME:-1}:/dataset
     deploy:
       resources:
         limits:

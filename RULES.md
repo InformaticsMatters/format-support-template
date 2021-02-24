@@ -69,20 +69,23 @@ Images...
 3.  **Must** use `CMD` and not `ENTRYPOINT` to launch the entrypoint script  
 4.  **Must** expect to be executed using an arbitrary user and group ID.
     Your container cannot expect to run as a privileged user
-5.  **Must** expect the environment variable `DT_DATASET_ID` to be set
-    to a string representing the identity of the dataset provided
-6.  **Must** expect a volume mounted into it using the path `/dataset`
-7.  **Must** expect to find the _read-only_ dataset file for processing in
+5.  **Must** expect the environment variable `DT_DATASET_NAME` to be set
+    to a string representing the name given of the dataset provided
+6.  **Must** expect the environment variable `DT_DATASET_FILE` to be set
+    to a string representing the full path to the dataset file that is to be
+    processed
+7.  **Must** expect a volume mounted into it using the path `/dataset`
+8.  **Must** expect to find the _read-only_ dataset file for processing in
     `/dataset/input`
-8.  **Must not** expect to be able to write to `/dataset/input`
-9.  **Should** process the input dataset into files in `/dataset/output`
-10. **Must** place the implementation into the directory `/home/format-support`
+9.  **Must not** expect to be able to write to `/dataset/input`
+10.  **Should** process the input dataset into files in `/dataset/output`
+11. **Must** place the implementation into the directory `/home/format-support`
     as the Pod will be started with this as the working directory.
-11. **Should** write diagnostic failure (textual) information
+12. **Should** write diagnostic failure (textual) information
     upon failure to the file identified by the container environment variable
     `DT_ERROR_TEXT_FILE`
-12. **Should** expect to be limited to no more than 1 CPU core
-13. **Should** expect to be limited to no more than 1GiB of memory.
+13. **Should** expect to be limited to no more than 1 CPU core
+14. **Should** expect to be limited to no more than 1GiB of memory.
     Importantly, exceeding the memory limit will result in the container
     being terminated
 

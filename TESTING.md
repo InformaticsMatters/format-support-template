@@ -29,10 +29,11 @@ Python virtual environment: -
 >   Ignore the warning about the IMAGE_TEST variable not being set
 
 ...and then, simulating the provision of the output directory that would
-normally be created by the DataTier Manager, running a specific test.
+normally be created by the DataTier Manager, we can run a specific test...
 
 Here we apply our test/success/**1** dataset to the container...
 
-    $ export IMAGE_TEST=1
-    $ mkdir -p test/success/${IMAGE_TEST}/output
+    $ export DATASET_NAME=1
+    $ export DATASET_FILE=dummy.txt
+    $ mkdir -p test/success/${DATASET_NAME}/output
     $ IMAGE_NAME=${PWD##*/} docker-compose up
