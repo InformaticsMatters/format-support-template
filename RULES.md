@@ -21,15 +21,14 @@ within the Data Tier Management service...
 -   It **must** have a `:stable` image tag
 -   It **must not** exit with a non-zero exit code
 -   It **must** write something to `DT_DATASET_OUTPUT_PATH`
--   It **must not** create the file `DT_ERROR_TEXT_FILE`
 
 ## Repository design rules
 
 Repositories...
 
 1.  **Must** not remove or edit the files `RULES.md`, `TESTING.md`,
-    `.yamllint` or `VERSION.txt`, these files are excluded from the MIT
-    license and must remain, unaltered if the formatter is to pass
+    `EVENTS.md`, `.yamllint` or `VERSION.txt`, these files are excluded from
+    the MIT license and must remain, unaltered if the formatter is to pass
     potential future automated testing
 2.  **Must** not remove the GitHub Action `lint` Job in any GitHub
     Action workflow, i.e. the `lint` action is an acceptance requirement
@@ -64,36 +63,38 @@ Repositories...
 19. **Should** have access to Python 3.8 or better - especially if the
     developer wants to execute the GitLab Action lint tests
  
->   Read test/README.md for a discussion of the test directory structure
+>   Read TESTING.md for a discussion of the test directory structure
     and example test execution commands that you are expected to be
     able to support
 
+>   Read EVENTS.md for a discussion of the event-reporting mechanism
+    that can be used to pass information back to the user.
+ 
 ## Image behaviour rules
 
 Images...
 
-1.  **Must** be published to Docker Hub
+1.  **Must** be published as a public image to Docker Hub
 2.  **Should** use `docker-entrypoint.sh` as their container entrypoint
-3.  **Must** use `CMD` and not `ENTRYPOINT` to launch the entrypoint script  
-4.  **Must** expect to be executed using an arbitrary user and group ID.
+3.  **Must** place the implementation into the directory `/home/format-support`
+    as the Pod will be started with this as the working directory.
+4.  **Must** use `CMD` and not `ENTRYPOINT` to launch the entrypoint script  
+5.  **Must** expect to be executed using an arbitrary user and group ID.
     Your container cannot expect to run as a privileged user
-5.  **Must** expect the environment variable `DT_DATASET_NAME` to be set
+6.  **Must** expect the environment variable `DT_DATASET_NAME` to be set
     to a string representing the name given of the dataset provided
-6.  **Must** expect the environment variable `DT_DATASET_FILE` to be set
+7.  **Must** expect the environment variable `DT_DATASET_FILE` to be set
     to a string representing the full path to the dataset file that is to be
     processed
-7.  **Must** expect a volume mounted into it using the path `/dataset`
-8.  **Should** process the input dataset into files in the directory
+8.  **Must** process the input dataset into files in the directory
     identified by `DT_DATASET_OUTPUT_PATH`
-9.  **Must** place the implementation into the directory `/home/format-support`
-    as the Pod will be started with this as the working directory.
-10. **Should** write diagnostic failure (textual) information
-    upon failure to the file identified by the container environment variable
-    `DT_ERROR_TEXT_FILE`
-11. **Should** expect to be limited to no more than 1 CPU core
-12. **Should** expect to be limited to no more than 1GiB of memory.
+9.  **Should** write event messages to the file identified by the environment
+    variable `DT_EVENT_FILE`
+10. **Should** expect to be limited to no more than 1 CPU core
+11. **Should** expect to be limited to no more than 1GiB of memory.
     Importantly, exceeding the memory limit will result in the container
     being terminated
+12. **Must** use a non-zero exit code to indicate an unrecoverable failure
 
 ---
 
