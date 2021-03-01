@@ -1,32 +1,31 @@
 # Format support event reporting
-Format containers can report status messages back to the data tier, which will
-make them available via thr REST API, using a _one-line-per-event_ text file.
-The name of the event file that is used is provided to the
-container using the environment variable `DT_EVENT_FILE`. This file will not
-exit when the container starts, and it is the responsibility of the
-format-support container to create it and write to it.
+Format containers can report status messages back to the data tier as _events_,
+which will make them available via the REST API. Status messages that you want
+to be recorded as events should be written to the container's stdout.
 
-The file does not have to be used.
+>   As a general guide, developers should otherwise limit what's written to
+    stdout from a format image - as each line is processed by the DataTier.
 
-## File format
-The file is text with each line representing an individual event: -
+## Event line format
+Messages that you want to be interpreted as _events_ are lines in stdout
+with the following format: -
 
-    <timstamp> # <event type> <message>
+    <timstamp> # <event type> -EVENT- <message>
 
 Where: -
 
--   `timestamp` is any string that can be processed by v2.8.x of the Python
-    [python-dateutil] module
+-   `timestamp` is any string representing a date and time that can be
+    processed by v2.8.x of the Python [python-dateutil] module
 -   `event type` is one of a standard set of recognised Python logging [levels]
--   `message` is any short message, that will be truncated to 79 characters
+-   `message` is any short message, which will be truncated to 79 characters
 
-Lines found in the file that do not match this format will be ignored.
+Lines found in stdout that do not match this format will be ignored.
 
 ## Examples
-The following lines all represent valid events in an event file: -
+The following lines all represent valid event lines: -
 
--   `2021-02-25T12:23:00.123456Z # INFO 400 of 25,000 molecules`
--   `Sat Oct 11 17:13:46 UTC 2003 # WARNING No molecules`
+-   `2021-02-25T12:23:00.123456Z # INFO -EVENT- 400 of 25,000 molecules`
+-   `Sat Oct 11 17:13:46 UTC 2003 # WARNING -EVENT- No molecules`
 
 ---
 

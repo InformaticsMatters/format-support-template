@@ -20,7 +20,7 @@ within the Data Tier Management service...
 
 -   It **must** have a `:stable` image tag
 -   It **must not** exit with a non-zero exit code
--   It **must** write something to `DT_DATASET_OUTPUT_PATH`
+-   It **should** write something to `DT_DATASET_OUTPUT_PATH`
 
 ## Repository design rules
 
@@ -88,13 +88,10 @@ Images...
     processed
 8.  **Must** process the input dataset into files in the directory
     identified by `DT_DATASET_OUTPUT_PATH`
-9.  **Should** write event messages to the file identified by the environment
-    variable `DT_EVENT_FILE`
-10. **Should** expect to be limited to no more than 1 CPU core
-11. **Should** expect to be limited to no more than 1GiB of memory.
-    Importantly, exceeding the memory limit will result in the container
-    being terminated
-12. **Must** use a non-zero exit code to indicate an unrecoverable failure
+9.  **Should** expect to be limited to no more than 1 CPU core ane no
+    more than 1GiB of memory. Importantly, exceeding the memory limit will
+    result in the container being terminated
+10. **Must** use a non-zero exit code to indicate an unrecoverable failure
 
 ---
 
