@@ -21,6 +21,14 @@ Where: -
 
 Lines found in stdout that do not match this format will be ignored.
 
+## Interpretation of event types
+At the moment the event types (logging levels) are all interpreted
+in the same way. The event type is preserved and returned to the user
+along with its message. Importantly, presence of error-like types (`CRITICAL`
+and `ERROR` for example) are not interpreted as a failure of the format-support
+container. Regardless of the presence of a `CRITICAL` event type, the container
+is only considered to have failed if it uses a non-zero exit code.
+
 ## Examples
 The following lines all represent valid event lines: -
 

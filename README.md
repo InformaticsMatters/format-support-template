@@ -40,8 +40,8 @@ Or `docker-compose`: -
 
     $ IMAGE_NAME=${PWD##*/} docker-compose build
 
->   The expectation is that you're using a recent docker (like `20.10.2`)
-    and docker-compose (link `1.27.4`).
+>   The expectation is that you're using a recent Docker engine
+    (like `20.10.2`) and docker-compose utility (like `1.27.4`).
 
 ## Testing
 Familiarise yourself with `TESTING.md`, which describes
