@@ -31,7 +31,7 @@ normally be created by the DataTier Manager, we can run a specific test...
 
 Here we apply our test/success/**1** dataset to the container...
 
-    $ export DATASET_NAME=1
-    $ export DATASET_FILE=dummy.txt
-    $ mkdir -p test/success/${DATASET_NAME}/output
+    $ export TEST_DIR=1
+    $ export DATASET_FILENAME=dummy.txt
+    $ mkdir -p test/success/${TEST_DIR}/output
     $ IMAGE_NAME=${PWD##*/} docker-compose up
