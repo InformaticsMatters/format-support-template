@@ -95,10 +95,16 @@ Images...
 10. If `DT_DATASET_OUTPUT_FORMAT` is set, the environment variable
     `DT_DATASET_OUTPUT_FILENAME` will be set, i.e. 'data.sdf.gz'
     If the output file ends '.gz' the output must be compressed (using gzip)
-11. **Should** expect to be limited to no more than 1 CPU core ane no
+11. **Must** expect the input and output directories to contain pre-existing
+    files
+12. **Must not** remove or over-write any files present in the input or
+    output directories
+13. **Should not** expect to be called to perform a file conversion for
+    a dataset that's already been converted successfully.
+14. **Should** expect to be limited to no more than 1 CPU core ane no
     more than 1GiB of memory. Importantly, exceeding the memory limit will
     result in the container being terminated
-12. **Must** use a non-zero exit code to indicate an unrecoverable failure
+15. **Must** use a non-zero exit code to indicate an unrecoverable failure
 
 ---
 
