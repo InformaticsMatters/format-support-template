@@ -6,9 +6,12 @@
 # Refer to RULES.md for comprehensive format support rules,
 # summarised below...
 #
+#    Formatting rules
+#    ----------------
 # 1. The environment variable `DT_DATASET_FILENAME` will be set to
 #    a string value representing the filename of the dataset.
-#    i.e. 'data.sdf.gz'. If compressed it wil end with '.gz'.
+#    i.e. 'data.sdf'. The formatters will not be presented with compressed
+#    files.
 # 2. The environment variable `DT_DATASET_INPUT_PATH` will be
 #    a directory you can find the file defined in part 1
 # 3. The environment variable `DT_DATASET_OUTPUT_PATH` will be
@@ -16,11 +19,17 @@
 # 4. The output path may not be empty, and the image must be aware of this
 #    possibility. The container must not remove any files (from the input or
 #    or output directory).
+# 5. If available, additional format variables will be presented, as text,
+#    in the variable `DT_DATASET_EXTRA_VARIABLES`.
 #
-# 5. The optional environment variable `DT_DATASET_OUTPUT_FORMAT` will be set
+#    Conversion
+#    ----------
+#    As well as the above, when called upon to change file formats...
+#
+# 1. The optional environment variable `DT_DATASET_OUTPUT_FORMAT` will be set
 #    if a file format conversion, rather than data loading, is to be performed.
 #    This is expected be a MIME type supported by the image
-# 6. If `DT_DATASET_OUTPUT_FORMAT` is set, the environment variable
+# 2. If `DT_DATASET_OUTPUT_FORMAT` is set, the environment variable
 #    `DT_DATASET_OUTPUT_FILENAME` will be set, i.e. 'data.sdf.gz'.
 #    The conversion process simply checks whether the filename ends '.gz'
 #    to determine whether compression (gzip) is required. The file must be
